@@ -5,7 +5,7 @@ from apache_beam.utils.pipeline_options import PipelineOptions
 from google.cloud import bigquery
 
 
-projectID = 'bamboo-magnet-166418'  # project name
+projectID = 'project'  # project name
 datasetID = 'wordcount_dataset'     # dataset name
 tableID = 'wordcount_table'         # table name
 
@@ -34,7 +34,7 @@ pipeline_args = [
     #1. DataflowRunner runs the pipeline on Google Cloud Dataflow
     '--runner=DataflowRunner',
     #2. Google Cloud Project ID
-    '--project=bamboo-magnet-166418',
+    '--project=project',
     #3. Google Cloud Storage path is required for staging local files
     '--staging_location=gs://word-count-bq/staging',
     #4. Google Cloud Storage path is required for temporary files
@@ -58,7 +58,7 @@ pipeline.run().wait_until_finish()
 # Query the table head sorted by count
 query = """
         SELECT word, count
-        FROM `bamboo-magnet-166418.wordcount_dataset.wordcount_table`
+        FROM `project.wordcount_dataset.wordcount_table`
         ORDER BY count ASC
         LIMIT 10;
         """
