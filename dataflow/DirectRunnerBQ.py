@@ -4,7 +4,7 @@ import apache_beam as beam
 from google.cloud import bigquery
 
 
-projectID = 'bamboo-magnet-166418'  # project name
+projectID = 'project'  # project name
 datasetID = 'wordcount_dataset'     # dataset name
 tableID = 'wordcount_table'         # table name
 
@@ -42,7 +42,7 @@ pipeline.run()
 # Query the table head sorted by count
 query = """
         SELECT word, count
-        FROM `bamboo-magnet-166418.wordcount_dataset.wordcount_table`
+        FROM `project.wordcount_dataset.wordcount_table`
         ORDER BY count ASC
         LIMIT 10;
         """
