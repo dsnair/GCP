@@ -8,7 +8,7 @@ pipeline_args = [
     #1. DataflowRunner runs the pipeline on Google Cloud Dataflow
     '--runner=DataflowRunner',
     #2. Google Cloud Project ID
-    '--project=bamboo-magnet-166418',
+    '--project=project',
     #3. Google Cloud Storage path is required for staging local files
     '--staging_location=gs://word-count/staging',
     #4. Google Cloud Storage path is required for temporary files
