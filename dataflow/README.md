@@ -30,7 +30,7 @@
   pip install google-cloud-bigquery==0.24.0
   ```
 
-## Test Run
+## Run
 
 ### 1\. (Basic) MinimalWordCount Example
 
