@@ -2,6 +2,6 @@
 Tutorials on how to use various Google Cloud Platform services
 
 ## Work Summary
-1. BigQuery
-2. Datalab
-3. Dataflow
+1. Dataflow
+2. BigQuery and Datalab
+3. Cloud Speech API
