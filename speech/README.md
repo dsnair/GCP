@@ -57,7 +57,6 @@ $ ls
 
 ## Format Audio file
 
-### 1. Command line
 ```shell
 $ ffmpeg -i John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3 -acodec pcm_s16le -ac 1 -f segment -segment_time 4800 John_F_Kennedy_Inaugural_Speech_January_20_1961_%d.wav
 ```
@@ -68,24 +67,15 @@ $ ffmpeg -i John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3 -acodec pcm_s16l
 * `-ac 1` sets mono channel
 * `-segment_time 4800` chunks the input audio file at every 4800 seconds (80 minutes) and names each chunk filename_0.wav, filename_1.wav, etc.
 
-### 2. Python script
-Copy-paste the `format_audio.py` file from this repo into `local_bucket` using your favorite text editor (nano, vi, etc.). Then, run this script on `John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3`:
-
-```shell
-$ python format_audio.py gs://your-bucket-name/John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3
-```
-
-**Output:** `format_audio.py` will create an audio file named `John_F_Kennedy_Inaugural_Speech_January_20_1961.wav` in `local_bucket`, which is also visible in your-bucket-name.
-
 ## Transcribe Audio file
 
-Copy-paste the `transcribe_audio.py` file from this repo into `local_bucket` using your favorite text editor (nano, vi, etc.) and run this script on the .WAV file you created above.
+Copy-paste the `transcribe_audio.py` file from this repo into `local_bucket` using your favorite text editor (nano, vi, etc.). 
 
 ```shell
-$ python transcribe_audio.py gs://your-bucket-name/John_F_Kennedy_Inaugural_Speech_January_20_1961.wav
+$ python transcribe_audio.py gs://your-bucket-name/John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3
 ```
 
-**Output:** `transcribe_audio.py` will print the transcribed audio content on your shell.
+**Output:** `transcribe_audio.py` will create a .WAV audio file and print its transcribed content on your shell.
 
 ## Clean-up
 
