@@ -91,11 +91,12 @@ $ ffmpeg -i John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3 -acodec pcm_s16l
 
 ## Clean-up
 
-Unmount your local directory.
+* Unmount your local directory
 ```shell
 $ cd
 $ fusermount -u local_bucket
 ```
+* [Delete your bucket](https://cloud.google.com/storage/docs/quickstart-console#clean-up) to avoid incurring charges to your account.
 
 ## What's Next?
 
