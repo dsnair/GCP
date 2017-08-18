@@ -31,21 +31,20 @@ In this tutorial, we'll learn how to use [Google Cloud Dataflow](https://cloud.g
 ### 1\. (Basic) MinimalWordCount Example
 
 * First, let's test our code locally on our laptop.
-```shell
-python DirectRunner.py
-```
-**Output:** A text file whose name starts with `wordcount_output-*`.
+  ```shell
+  python DirectRunner.py
+  ```
+  **Output:** A text file whose name starts with `wordcount_output-*`.
 
   You may see the following warning<br>
-  `No handlers could be found for logger "oauth2client.contrib.multistore_file"`.<br>
-This is a harmless warning and you may ignore it.
+  `No handlers could be found for logger "oauth2client.contrib.multistore_file"`.<br> This is a harmless warning and you may ignore it.
 
 * Now that the code works locally, let's test it on the cloud.  
 
   Edit `DataflowRunner.py` with your values for `your-project-ID` and `your-bucket-name`. You don't need to create the `your-bucket-name/staging` and `your-bucket-name/temp` sub-directories; the script automatically creates them.
-```shell
-python DataflowRunner.py
-```
+  ```shell
+  python DataflowRunner.py
+  ```
   It may take a few minutes to generate the output files in `your-bucket-name`. You may [monitor](https://cloud.google.com/dataflow/pipelines/dataflow-monitoring-intf#accessing-the-dataflow-monitoring-interface) this process in your project on the cloud. The job name is `word-count-job`.
 
   **Output:** [Go to `your-bucket-name`](https://console.cloud.google.com/storage/browser). You'll see two folders named `staging/` and `temp/`, and three text files who names start with `wordcount_output-*`. These text files contain all the unique words in the input file and their frequencies.
@@ -86,5 +85,5 @@ pyenv deactivate
 
 ## Code Reference
 
-- Apache-beam [GitHub repo](https://github.com/apache/beam/blob/master/sdks/python/apache_beam/examples/wordcount_minimal.py)
-- Google Cloud Platform BigQuery [GitHub repo](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/bigquery/cloud-client/simple_app.py)
+* Apache-beam [GitHub repo](https://github.com/apache/beam/blob/master/sdks/python/apache_beam/examples/wordcount_minimal.py)
+* Google Cloud Platform BigQuery [GitHub repo](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/bigquery/cloud-client/simple_app.py)
