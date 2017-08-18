@@ -6,9 +6,13 @@ In this tutorial, we'll learn how to use the [Google Cloud Speech API](https://c
 
 ## Data
 
-[YouTube Audio Library](https://www.youtube.com/audiolibrary/music) has a number of public domain audio files. The audio file transcribed in this tutorial (John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3) was downloaded from this library (by searching "speech" in the search box).
+[YouTube Audio Library](https://www.youtube.com/audiolibrary/music) has a number of public domain audio files. The audio file transcribed in this tutorial (`John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3`) was downloaded from this library (by searching "speech" in the search box).
 
-**Audio longer than 1 minute must reside on Google Cloud Storage** (GCS) and **audio up to 80 minutes duration can be processed at a time** [[usage limit]](https://cloud.google.com/speech/limits). Since most audio files would be longer than 1 minute, we'll skip the part where files could be transcribed locally on your laptop and instead we'll learn how to transcribe files on Google Cloud Storage.
+### Data Size Limitations
+
+**Audio longer than 1 minute must reside on Google Cloud Storage** (GCS) and **audio up to 80 minutes duration can be processed at a time** [(usage limit)](https://cloud.google.com/speech/limits).
+
+Since most audio files would be longer than 1 minute, we'll skip the part where files could be transcribed locally on your laptop and instead we'll learn how to transcribe files on Google Cloud Storage.
 
 ## Requirements
 
@@ -16,9 +20,7 @@ In this tutorial, we'll learn how to use the [Google Cloud Speech API](https://c
    1. If you haven't already, you may sign-up for the [free GCP trial credit](https://cloud.google.com/free/docs/frequently-asked-questions)
    * [Set up your project](https://cloud.google.com/speech/docs/getting-started#set_up_your_project) on GCP and enable the Speech API
 
-### II. Set-up GCS bucket
-1. [Create a bucket](https://cloud.google.com/storage/docs/quickstart-console#create_a_bucket)
-* [Upload](https://cloud.google.com/storage/docs/object-basics#upload) your audio file to this bucket
+### II. [Create a GCS bucket](https://cloud.google.com/storage/docs/quickstart-console#create_a_bucket)
 
 ### III. Install packages
 
@@ -36,7 +38,7 @@ $ sudo pip install google-cloud-speech==0.27.1
 
 #### 3. Install [gcsfuse](https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/installing.md)
 
-It's interesting to note that `ls` doesn't show the audio file you uploaded to your bucket on your cloud shell. This is why we need to install gcsfuse so that we can mount a directory on the cloud shell to a bucket on GCS and have the two be in sync.
+gcsfuse mounts a directory on your cloud shell to a bucket on GCS. This allows the two directories on different machines to see each others content and be in sync when the directory contents change.
 
 ```shell
 $ sudo apt-get install lsb-release
@@ -47,7 +49,8 @@ $ sudo apt-get update
 $ sudo apt-get install gcsfuse
 ```
 
-Now let's mount a local directory (named `local_bucket`) on the cloud shell to your bucket that has the audio file.
+Now let's mount a local directory (named `local_bucket`) on your cloud shell to your GCS bucket.
+
 ```shell
 $ mkdir local_bucket
 $ gcsfuse your-bucket-name local_bucket
@@ -55,27 +58,36 @@ $ cd local_bucket/
 $ ls
 ```
 
-## Format Audio file
-
+### IV. Clone this Repo
 ```shell
-$ ffmpeg -i John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3 -acodec pcm_s16le -ac 1 -f segment -segment_time 4800 John_F_Kennedy_Inaugural_Speech_January_20_1961_%d.wav
+$ git clone https://github.com/dsnair/GCP.git
+$ cd speech
+$ ls
 ```
-**Output:** The command line above creates `John_F_Kennedy_Inaugural_Speech_January_20_1961_0.wav` in `local_bucket`, which is also visible in your-bucket-name.
-
-* `-i` takes an input audio file
-* `-acodec pcm_s16le` sets linear16 audio encoding
-* `-ac 1` sets mono channel
-* `-segment_time 4800` chunks the input audio file at every 4800 seconds (80 minutes) and names each chunk filename_0.wav, filename_1.wav, etc.
+Note that the contents of this repo are now visible in `your-bucket-name` on GCS.
 
 ## Transcribe Audio file
 
-In your cloud shell, create a file named `transcribe_audio.py` using your favorite text editor (nano, vi, etc.) and copy-paste the contents of the file from this repo into the file on the shell. Save the file on the shell in `local_bucket`.  
 
 ```shell
 $ python transcribe_audio.py gs://your-bucket-name/John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3
 ```
 
-**Output:** `transcribe_audio.py` will create a .WAV audio file and print its transcribed content on your shell.
+**Output:** `transcribe_audio.py` formats the audio file to create .WAV file and outputs the audio transcription on your shell.
+
+### Format Audio file
+
+Here are the details on how the audio file is formatted using FFmpeg:
+
+```shell
+$ ffmpeg -i John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3 -acodec pcm_s16le -ac 1 -f segment -segment_time 4800 John_F_Kennedy_Inaugural_Speech_January_20_1961_%d.wav
+```
+**Output:** The command line above creates `John_F_Kennedy_Inaugural_Speech_January_20_1961_0.wav` in `local_bucket`, which is also visible in `your-bucket-name`.
+
+* `-i` takes an input audio file
+* `-acodec pcm_s16le` sets linear16 audio encoding
+* `-ac 1` sets mono channel
+* `-segment_time 4800` chunks the input audio file at every 4800 seconds (80 minutes) and names each chunk filename_0.wav, filename_1.wav, etc.
 
 ## Clean-up
 
@@ -93,10 +105,18 @@ If you need more computing power, consider starting a VM instance on GCP.  It ca
        * '**Allow full access to all Cloud APIs**' under 'Access scopes'
    2. [Connect to your VM instance](https://cloud.google.com/compute/docs/quickstart-linux#connect_to_your_instance)
 
-The cloud shell comes pre-installed with pip. However, you'd have to install pip yourself on a VM instance:
+(`vm-setup.sh` creates a VM instance named `instance-1` with the configurations stated above. Execute this bash script as follows:
+```shell
+$ chmod +x vm-setup.sh
+$ ./vm-setup.sh
+```
+)
+
+The cloud shell comes pre-installed with pip and git. However, you'd have to install pip yourself on a VM instance:
 ```shell
 $ sudo apt-get install python-pip python-dev build-essential
 $ sudo pip install --upgrade pip
+$ sudo apt-get install git
 ```
 
 Again, files stored and packages installed in the **HOME** directory on your VM instance will persist.
