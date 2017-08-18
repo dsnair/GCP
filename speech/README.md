@@ -69,7 +69,7 @@ $ ffmpeg -i John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3 -acodec pcm_s16l
 
 ## Transcribe Audio file
 
-Copy-paste the `transcribe_audio.py` file from this repo into `local_bucket` using your favorite text editor (nano, vi, etc.). 
+In your cloud shell, create a file named `transcribe_audio.py` using your favorite text editor (nano, vi, etc.) and copy-paste the contents of the file from this repo into the file on the shell. Save the file on the shell in `local_bucket`.  
 
 ```shell
 $ python transcribe_audio.py gs://your-bucket-name/John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3
@@ -99,7 +99,7 @@ $ sudo apt-get install python-pip python-dev build-essential
 $ sudo pip install --upgrade pip
 ```
 
-Again, files stored and packages installed on the **HOME** directory on your VM instance will persist.
+Again, files stored and packages installed in the **HOME** directory on your VM instance will persist.
 
 Don't forget to [delete your VM instance](https://cloud.google.com/compute/docs/quickstart-linux#clean-up) after you're done to avoid incurring charges to your GCP account.
 
