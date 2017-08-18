@@ -5,8 +5,8 @@ from google.cloud import bigquery
 
 
 projectID = 'your-project-ID'  # project name
-datasetID = 'wordcount_dataset'     # dataset name
-tableID = 'wordcount_table'         # table name
+datasetID = 'wordcount_dataset'# dataset name
+tableID = 'wordcount_table'    # table name
 
 client = bigquery.Client(project = projectID)
 
@@ -42,7 +42,7 @@ pipeline.run()
 # Query the table head sorted by count
 query = """
         SELECT word, count
-        FROM `your-project-ID.wordcount_dataset.wordcount_table`
+        FROM `wordcount_dataset.wordcount_table`
         ORDER BY count ASC
         LIMIT 10;
         """

@@ -1,13 +1,13 @@
 import apache_beam as beam
 import re
 
-from apache_beam.utils.pipeline_options import PipelineOptions
+from apache_beam.pipeline import PipelineOptions
 from google.cloud import bigquery
 
 
-projectID = 'your-project-ID'  # project name
-datasetID = 'wordcount_dataset'     # dataset name
-tableID = 'wordcount_table'         # table name
+projectID = 'your-project-ID'    # project name
+datasetID = 'wordcount_dataset'  # dataset name
+tableID = 'wordcount_table'      # table name
 
 # Instantiate the BigQuery client
 client = bigquery.Client(project = projectID)
@@ -58,7 +58,7 @@ pipeline.run().wait_until_finish()
 # Query the table head sorted by count
 query = """
         SELECT word, count
-        FROM `your-project-ID.wordcount_dataset.wordcount_table`
+        FROM `wordcount_dataset.wordcount_table`
         ORDER BY count ASC
         LIMIT 10;
         """

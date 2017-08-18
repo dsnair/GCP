@@ -1,8 +1,7 @@
 import apache_beam as beam
 import re
 
-from apache_beam.utils.pipeline_options import PipelineOptions
-
+from apache_beam.pipeline import PipelineOptions
 
 pipeline_args = [
     #1. DataflowRunner runs the pipeline on Google Cloud Dataflow
