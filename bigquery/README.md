@@ -30,6 +30,6 @@ pip install -r requirements.txt
 * [df.to_gbq](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_gbq.html)
 * [pd.read_gbq](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_gbq.html)
 
-## Additional tutorial
+## Additional Tutorial
 
 The `dataflow` and `datalab` directories within this repository have tutorials on how to write dataflow results to BigQuery and how to write BigQuery queries within Datalab.
