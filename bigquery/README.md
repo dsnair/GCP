@@ -22,7 +22,11 @@ pip install -r requirements.txt
 
 ## Clean-up
 
-[Delete the BigQuery dataset](https://cloud.google.com/bigquery/quickstart-web-ui#clean-up) to avoid incurring charges to your account.
+* [Delete the BigQuery dataset](https://cloud.google.com/bigquery/quickstart-web-ui#clean-up) to avoid incurring charges to your account.
+* If you created a Python virtual environment, deactivate it:
+```shell
+pyenv deactivate
+```
 
 ## Reference
 
