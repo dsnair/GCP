@@ -106,7 +106,7 @@ If you need more computing power, consider starting a VM instance on GCP.  It ca
        * '**Allow full access to all Cloud APIs**' under 'Access scopes'
    2. [Connect to your VM instance](https://cloud.google.com/compute/docs/quickstart-linux#connect_to_your_instance)
 
-(`vm-setup.sh` creates a VM instance named `instance-1` with the configurations stated above. Execute this bash script as follows:
+(`vm-setup.sh` creates a VM instance named `instance-1` with the configurations stated above. Execute this bash script on cloud shell as follows:
 ```shell
 $ chmod +x vm-setup.sh
 $ ./vm-setup.sh
