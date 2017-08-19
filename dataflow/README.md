@@ -10,9 +10,9 @@ In this tutorial, we'll learn how to use [Google Cloud Dataflow](https://cloud.g
 ## Requirements
 
 1. Install pip (version >= 7.0.0).
-2. (*Optional, but recommended*) Install pyenv-virtualenv ([Instructions for macOS](http://akbaribrahim.com/)).
-3. (*Optional, but recommended*) Create and activate a Python virtual environment in pyenv-virtualenv:
-
+2. (*optional, but recommended*) Set-up a Python virtual environment:
+  * Install pyenv-virtualenv ([Instructions for macOS](http://akbaribrahim.com/)).
+  * Create and activate an environment:
   ```shell
   pyenv virtualenv gcp_env
   pyenv activate gcp_env
