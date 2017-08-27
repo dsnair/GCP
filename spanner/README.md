@@ -25,10 +25,15 @@ pip install -r requirements.txt
 1. Create a Spanner instance and create a Singers table in the UI as shown [here](https://cloud.google.com/spanner/docs/quickstart-console#create_an_instance).
 (You may also run the `spanner-setup.sh` script to take care of this step.
   ```shell
-  chmod +x spanner-setup.sh
-  ./spanner-setup.sh
+  $ chmod +x spanner-setup.sh
+  $ ./spanner-setup.sh
   ```
   )
+2. Write to the Singers table.
+```shell
+$ python write-to-table.py
+```
+These values are now visible in the UI.
 
 ## Clean-up
 
