@@ -1,12 +1,5 @@
 # README
-cloud shell
-git clone
-vm-setup.sh
-git clone
-install.sh
-link gcsfuse
-upload json service account file
-export GOOGLE_APPLICATION_CREDENTIALS=<path_to_service_account_file>
+
 ## Project Summary
 
 In this tutorial, we'll learn how to use the [Google Cloud Speech API](https://cloud.google.com/speech/) to transcribe an audio file. The trickiest part of this API is converting your audio data into the correct format, which we'll do using [FFmpeg](https://www.ffmpeg.org/).
@@ -61,15 +54,22 @@ $ chmod +x install.sh
 $ ./install.sh
 ```
 
+### V. Mount local directory
+
 gcsfuse mounts a directory on your VM to a bucket on GCS. This allows the two directories on different machines to see each others content and be in sync when the directory contents change.
 
-Now let's mount a local directory (named `local_bucket`) on your VM to your GCS bucket.
+Now, let's mount a local directory named `local_bucket` on your VM to your GCS bucket.
 
 ```shell
 $ mkdir local_bucket
 $ gcsfuse your-bucket-name local_bucket
 $ cd local_bucket/
 $ ls
+```
+
+Set the environment variable to point to the service account key:
+```shell
+$ export GOOGLE_APPLICATION_CREDENTIALS=path_to/service_account_file.json
 ```
 
 ## Transcribe Audio file
