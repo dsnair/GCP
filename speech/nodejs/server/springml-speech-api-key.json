@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "billion-taxi-rides",
+  "private_key_id": "6bb8fea813f6894bd99de8cfec7a026a7588bdc0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLdddSvIJc9++O\nukCdOe5Gr+SM5ZysAwzpz5uVUV5pHzMzfEzBGgazV/RBNvocc2CHGYXJpfUVD7ro\nJn4bd7cgOupQZmS7k41sP6ofSnfgkL8yGTmgPgZRGTr4C5/f056RxiucNh0t5lN1\nDp7WlnHg6sJZpHM8jLjxsA3Kzb6jK0GUSJ21BXiaTtYZDD5g2E35Kx4Pi+ycJFBS\nuGxZVT16IxPlfzFkL+m20p5JpC3ADwQi++DcWFUvoNFrlJ6LS9bclOnLTAZlGWfG\nJ6N6a0M8m4CvWZV/UzF+CRTneoNJ7wJw276HzIOI1BMX0cKAvaZUn8qY6nw7ml7C\nKy8YG3mrAgMBAAECggEAYUxofbOSsD0NffcKIWZr0bgaF1tTElufGE1lPQIdoS3/\ngVanKg11ON0N/QX6lBKFDfahqW5JBxpvqseFtUMJ+0rRdUOSVrXYgvTrOW2WaHkw\nRhgUG9KtmKj1L1v3x8Ve5p2bi2fBiorETI2CXmKx8PqzmMTxKvqtEz+7SModqc+S\neJZxwIRCDo84CEPUdOh17cww+nslOsh9amB4DM+CAO+r7DDvedixSF28qtjeyVTm\n7nohmxii2arUjsHvpmA453dmDFbV++IMwEbQ7r9qZSsSWQIRkcX2s0LKQ5Tx52IS\ng0AFT/Rj9wAy0TqPSpa4r4TYeFC8KuSgX7HX2fN18QKBgQDrYGnPssKMDzTnLvYY\nBGLvXoniRD28DtSXmx5f2d87gy/mzOtHchD6UnsVh8gVcM/UJVBG8sZOWDsJVIOW\npQXsDfsz4qvdL6Ssw9ycsUtCUVkJKWh8NKgNlf78RBuaapQt9wh0McTh9vAdogG/\nc3j2W+uDU40/DUGGzrBl4YutowKBgQDdSYh68lM9SaOURIz1c7jjq5geouVxXgtT\n1SnYxCzz4x7BNhtnGddr3ez2lyj8QAYZAKBvQZCKYT0ifbh51dsl8HSIZ9zjldME\n6YwC2A29APFDMFXjzKDtFnJ9aiBN85JCpWgWDTAngDq9SsVp2xMUX4u9WW6NOXMH\nVyeSag00WQKBgDqwVpHQO8waepFuVzRT26tdwjml1FLQy9dleSRjOdMn+citrbip\ny2vvJvuOWKhn8ZovF54pKKMeQtInvYvRZ/Gc5tbgHQRQvdnKGHcFigNmLzImngPi\nSUjh7qtN/Cf7jSkM4JHAWxwQq3xoCdGH5FBhSQ78xUpEbuNDJB6zJ1XLAoGAfT31\nBMDJ49IdxvjVXsZUSmb//bbsbTFw782hlZHSb2aILYpWEBBMIDzGtPnwtHP3/4af\nRtiw2eEXHMJS+oHTOrHRArLmDdjqScl0+NcXT3WNFx3wPrG+EvG1cs3x4qyMhzPe\nqTxlmLW2iRQcj0Dyl4FMMarAKyXsuKbXOsLTHmECgYEAqJjfqrOwBOgzZ0EzV49U\nYu8aB2o3Lv0a9WapAuaHkyoHzTOMUeMPgi8RNIUOjwbw5GVyPA6ygO7zG4U3VtPr\nh8tCNSc1/dIBZSB1QAgtwPIzKTk2a84MORU0AVBG6VHv1kxE7WC11At5kRC2jzPI\n6zKlwaUeidbbstAHLBa6mp0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sml-cloud-ml-service-account@billion-taxi-rides.iam.gserviceaccount.com",
+  "client_id": "101873069379247936691",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sml-cloud-ml-service-account%40billion-taxi-rides.iam.gserviceaccount.com"
+}

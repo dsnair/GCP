@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "springml-speech-demo",
+    "staging": "springml-speech-demo"
+  }
+}
