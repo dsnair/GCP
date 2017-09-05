@@ -6,50 +6,59 @@ In this tutorial, we'll learn how to use the [Google Cloud Speech API](https://c
 
 ## Data
 
-[YouTube Audio Library](https://www.youtube.com/audiolibrary/music) has a number of public domain audio files. The audio file transcribed in this tutorial (`John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3`) was downloaded from this library (by searching "speech" in the search box).
+[YouTube Audio Library](https://www.youtube.com/audiolibrary/music) has a number of public domain audio files. The audio file transcribed in this tutorial (`John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3`) was downloaded from this library.
 
 ### Data Size Limitations
 
 **Audio longer than 1 minute must reside on Google Cloud Storage** (GCS) and **audio up to 80 minutes duration can be processed at a time** [(usage limit)](https://cloud.google.com/speech/limits).
 
-Since most audio files would be longer than 1 minute, we'll skip the part where files could be transcribed locally on your laptop and instead we'll learn how to transcribe files on Google Cloud Storage.
+Since most audio files would be longer than 1 minute, we'll skip the part where files could be transcribed locally on your laptop and instead we'll learn how to transcribe files on GCS.
 
 ## Requirements
 
 ### I. Google Cloud Platform (GCP) credentials
    1. If you haven't already, you may sign-up for the [free GCP trial credit](https://cloud.google.com/free/docs/frequently-asked-questions)
-   * [Set up your project](https://cloud.google.com/speech/docs/getting-started#set_up_your_project) on GCP and enable the Speech API
+   * [Set up your project](https://cloud.google.com/speech/docs/getting-started#set_up_your_project) on GCP
 
-### II. [Create a GCS bucket](https://cloud.google.com/storage/docs/quickstart-console#create_a_bucket)
-
-### III. Install packages
-
-[Start your cloud shell](https://cloud.google.com/shell/docs/quickstart#start_cloud_shell) and let's install the following packages. Note that none of these packages will persist once you log-out of this shell session. If you want [persistence](https://cloud.google.com/shell/docs/features#persistent_disk_storage), then `cd /home`.
-
-#### 1. Install FFmpeg  
+### II. GCS bucket
+1. [Create a GCS bucket](https://cloud.google.com/storage/docs/quickstart-console#create_a_bucket)
+2. [Upload](https://cloud.google.com/storage/docs/quickstart-console#upload_an_object_into_the_bucket) the JSON file for the service account key that you just created in the step above
+3. Clone this repo on the [cloud shell](https://cloud.google.com/shell/docs/quickstart#start_cloud_shell):
 ```shell
-$ sudo apt-get install ffmpeg
+$ git clone https://github.com/dsnair/GCP.git
+$ cd speech
+$ ls
 ```
 
-#### 2. Install the Speech API Python library  
+### III. VM
+
+On the cloud shell, run the `vm-setup.sh` script to create an Ubuntu-based VM instance named `instance-1`:
 ```shell
-$ sudo pip install google-cloud-speech==0.27.1
+$ chmod +x vm-setup.sh
+$ ./vm-setup.sh
+```
+OR
+
+Do it manually on the Console:
+1. [Create a VM instance](https://cloud.google.com/compute/docs/quickstart-linux#create_a_virtual_machine_instance)
+    * Select **Ubuntu** under 'Boot disk' for all the above installation commands to work
+    * '**Allow full access to all Cloud APIs**' under 'Access scopes'
+2. [Connect to your VM instance](https://cloud.google.com/compute/docs/quickstart-linux#connect_to_your_instance)
+
+### IV. Install packages
+
+1. Clone this repo on your VM (different from the cloud shell)
+2. On your VM, run the `install.sh` script to install FFmpeg, the Speech API client for Python, and [gcsfuse](https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/installing.md):
+```shell
+$ chmod +x install.sh
+$ ./install.sh
 ```
 
-#### 3. Install [gcsfuse](https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/installing.md)
+### V. Mount local directory
 
-gcsfuse mounts a directory on your cloud shell to a bucket on GCS. This allows the two directories on different machines to see each others content and be in sync when the directory contents change.
+gcsfuse mounts a directory on your VM to a bucket on GCS. This allows the two directories on different machines to see each others content and be in sync when the directory contents change.
 
-```shell
-$ sudo apt-get install lsb-release
-$ export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
-$ echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
-$ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-$ sudo apt-get update
-$ sudo apt-get install gcsfuse
-```
-
-Now let's mount a local directory (named `local_bucket`) on your cloud shell to your GCS bucket.
+Now, let's mount a local directory named `local_bucket` on your VM to your GCS bucket.
 
 ```shell
 $ mkdir local_bucket
@@ -58,13 +67,10 @@ $ cd local_bucket/
 $ ls
 ```
 
-### IV. Clone this Repo
+Set the environment variable to point to the service account key:
 ```shell
-$ git clone https://github.com/dsnair/GCP.git
-$ cd speech
-$ ls
+$ export GOOGLE_APPLICATION_CREDENTIALS=path_to/service_account_file.json
 ```
-Note that the contents of this repo are now visible in `your-bucket-name` on GCS.
 
 ## Transcribe Audio file
 
@@ -96,33 +102,8 @@ $ ffmpeg -i John_F_Kennedy_Inaugural_Speech_January_20_1961.mp3 -acodec pcm_s16l
 $ cd
 $ fusermount -u local_bucket
 ```
-* [Delete your bucket](https://cloud.google.com/storage/docs/quickstart-console#clean-up) to avoid incurring charges to your account.
-
-## What's Next?
-
-If you need more computing power, consider starting a VM instance on GCP.  It can be done in two simple steps:
-   1. [Create a VM instance](https://cloud.google.com/compute/docs/quickstart-linux#create_a_virtual_machine_instance)
-       * Select **Ubuntu** under 'Boot disk' for all the above installation commands to work
-       * '**Allow full access to all Cloud APIs**' under 'Access scopes'
-   2. [Connect to your VM instance](https://cloud.google.com/compute/docs/quickstart-linux#connect_to_your_instance)
-
-(`vm-setup.sh` creates a VM instance named `instance-1` with the configurations stated above. Execute this bash script on cloud shell as follows:
-```shell
-$ chmod +x vm-setup.sh
-$ ./vm-setup.sh
-```
-)
-
-The cloud shell comes pre-installed with pip and git. However, you'd have to install pip yourself on a VM instance:
-```shell
-$ sudo apt-get install python-pip python-dev build-essential
-$ sudo pip install --upgrade pip
-$ sudo apt-get install git
-```
-
-Again, files stored and packages installed in the **HOME** directory on your VM instance will persist.
-
-Don't forget to [delete your VM instance](https://cloud.google.com/compute/docs/quickstart-linux#clean-up) after you're done to avoid incurring charges to your GCP account.
+* [Delete your bucket](https://cloud.google.com/storage/docs/quickstart-console#clean-up) to avoid incurring charges to your account
+* [Delete your VM instance](https://cloud.google.com/compute/docs/quickstart-linux#clean-up)
 
 ## Reference
 
