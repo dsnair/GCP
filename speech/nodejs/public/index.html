@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="springml-app">
+
+<head>
+    <meta charset="utf-8">
+    <title>SpringML Google Speech Demo</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <!-- local javascript -->
+    <script type="text/javascript" src="./js/app.js"></script>
+</head>
+
+<body ng-controller="MainController">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="" href="#"><img src="http://i.imgur.com/CFA8kXA.png" alt=""></a>
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Add Google URI" id="uri" name="uri" ng-model="data.uri">
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="transcribe(data)">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+    <button class="btn btn-default btn-lg" ng-hide="showSpinner"><i class="fa fa-spinner fa-spin"></i> Loading</button>
+    <div class="container-fluid" ng-repeat="transcription in transcriptions">
+
+        <p>{{transcription}}</p>
+    </div>
+</body>
+
+</html>

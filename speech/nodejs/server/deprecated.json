@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "springml-speech-api",
+  "private_key_id": "AIzaSyDdCjhIY3lwJgWk38g38_KSnJySVpYf_WM",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDbvV+mrk1IQwV+\nyMdsx2LqP0fkfIeMCP1fdV7XwafNhelBh87rrIU/UvHcxD09jTH0EcxT3uh7yiwu\nPVQ6S3XjNrsIzV7a5imK/a68BhLssp2+ftwXhgvMD98i7f7wz9r+K8jOjo325+r5\nNyxbk/bdssBHXVZw+dl+Y3i8NbYDW9alkmT9ctnqi/OYJHewZqZHHMOPgrmro+KM\nVbv6Xd/TCBXIctQZaM/EvlxGlf50J7wtV+IWsWRCydsJ5fuAQZGmLvwkNh1X/gMM\nvHHaZ1omykWxcgjVxPHn/QB2U4bsz75EAZLhRefQT6n0kybGdUb35x2HulYyGkao\n/5kCENUBAgMBAAECggEARvDefotrO9cXYRUk/QNp9cI0TZm+kQEd+8GCuxk0OW/w\nHE3iCcgKxKTcnK9mLgb1h5xvYOxoFf7xQIRgOum9x3sV6wOSig0ggFTiIqW7WltX\n/fYqzBVknZ7KJRa85bXVN5WfIMB5KKs6+vZLBc3BN1XMKb4CeDrRcrJeejTE7FQS\n0k6u1wqAjlFkTzk5hq1499/0Rau5H9QkClOZHseAHdU81v7tRY5agFvVbzkHwYOH\nqXGE2FRWmlsJp0tyffvh7pnOjpgbU/EZnUGMg9u96Z9M0/JJ56n8IHcSl/QKq+CM\nxo1VKtcInqXSpOB5ut0RoL1nDT9qsGm161b3R7s2gQKBgQDwKc/zDKp2hGyICaDP\noz01F719f9c5zrvBO/H/tMYNJuqWv37wbxhw5k1UTd3eEQXyNmQkDRZmQ3XtvQ7I\ndyjJEx9RLPYksnkJAjqdRPpE96RA3XbRp0F3DBXGIAhgLAMPlrAoy5bUHGUpJbPC\nYiwi0ZU4JjmTioevbqr2fIUSWQKBgQDqOsqidnDwOfwO1+QUdq5e8m2fMLOSgGEN\ntQ+zDCleTtYZ9BJmn7H2x+iHGYb9rfB7SEUxOd4uYwHkgw6X2t9WG55g/Cd7onDl\noxdbq0ZLch3JKafy8QBZQ/fW9swNIKL0n2cA0UVuYT9N+2KRJLrSVegZ3EIcN3qC\nQkgFDRPy6QKBgAbjrCt0uY8czWA5pntOW3siazUmba4i2A/7AD4tmWDXNPOOGr4a\n8cCLWryIX0z3gAwqs0S1e2cDmGZxffMSOAFMoyFZANacqAwyHCxWxjckQ3n44Gez\nPJWFqzo7wQHBQXU5BWSmMnVzOxOrGTUCS/HTwUwTDKPG3Y2SxyS6/bZBAoGAEKel\niO/LEAnPdm67dQkLVQz/5nXcDuq5+/OH7j9LIb2RU78bH9jzGo0UZ6bVBmy70MhO\nwzVOKxY3KDx5aSrS/phwJo1HcW8Xf/ycyJPhJ7QxkgA4RPoGAFLo6Iwb7kMH00US\nWeiHe1XG3pClbZSjBBm/qzcSLFd1ipWT8WgApyECgYBDPW1kmrAEIrKz2fksyDyM\nNC8qAiozq6VNj4+/DxrcD1GMUinzVBs534etcoyYYZRiJ8s+OtioLAUpRGQxS6gv\nWALHc4c7eAsc6V/xQiFznfg7pmC/nvO9wC3OkqVZBZ0pyQiCPvJ9JbpFiiMazDjG\neUDJyG5jO2Nn50S/7QkhMg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "springml-speech-api@springml-speech-api.iam.gserviceaccount.com",
+  "client_id": "106437692535888618814",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/springml-speech-api%40springml-speech-api.iam.gserviceaccount.com"
+}
